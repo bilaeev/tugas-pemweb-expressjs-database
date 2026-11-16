@@ -1,4 +1,4 @@
-const express = require("express");
+﻿const express = require("express");
 const productRoutes = require("./routes/product.routes");
 
 const app = express();
@@ -9,9 +9,11 @@ app.get("/", (req, res) => {
 });
 
 app.use("/products", productRoutes);
+app.use(express.static("public"));
 
 app.use((req, res) => {
   res.status(404).json({ message: "Endpoint tidak ditemukan" });
 });
 
 module.exports = app;
+
