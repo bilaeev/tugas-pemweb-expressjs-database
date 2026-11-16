@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product Garden | Manajemen Produk</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="decoration deco-one">✿</div>
+  <div class="decoration deco-two">♡</div>
+
+  <main class="container">
+    <header class="hero">
+      <div class="eyebrow">✿ MY LITTLE PRODUCT GARDEN ✿</div>
+      <h1>Manajemen Produk <span>♡</span></h1>
+      <p>Kelola produk favoritmu di satu tempat yang manis!</p>
+    </header>
+
+    <section class="panel">
+      <div class="toolbar">
+        <div>
+          <h2>Daftar Produk <span>✿</span></h2>
+          <p>Tambah, edit, dan kelola koleksi produkmu.</p>
+        </div>
+        <button id="addBtn" class="btn primary">＋ Tambah Produk</button>
+      </div>
+
+      <div class="search-row">
+        <input id="search" type="search"
+          placeholder="⌕ Cari nama produk..." aria-label="Cari produk">
+        <span id="count">Memuat produk...</span>
+      </div>
+
+      <div id="products" class="product-grid"></div>
+      <p id="summary" class="summary"></p>
+    </section>
+
+    <footer>Made with ♡ · Product Garden</footer>
+  </main>
+
+  <div id="overlay" class="overlay hidden">
+    <div class="modal" role="dialog" aria-modal="true"
+      aria-labelledby="modalTitle">
+      <button id="closeBtn" class="close" aria-label="Tutup">×</button>
+      <div id="modalIcon" class="modal-icon">🌷</div>
+      <h2 id="modalTitle">Tambah Produk</h2>
+      <p id="modalDesc">Isi informasi produk di bawah ini.</p>
+
+      <form id="productForm">
+        <label for="name">Nama Produk</label>
+        <input id="name" maxlength="100" required
+          placeholder="Contoh: Pulpen" autocomplete="off">
+
+        <label for="price">Harga (Rp)</label>
+        <input id="price" type="number" min="1" step="1"
+          required placeholder="Contoh: 5000">
+
+        <p id="formError" class="form-error" role="alert"></p>
+
+        <div class="modal-actions">
+          <button type="button" id="cancelBtn" class="btn outline">Batal</button>
+          <button type="submit" id="submitBtn" class="btn primary">
+            Simpan Produk
+          </button>
+        </div>
+      </form>
+
+      <div id="deleteContent" class="hidden">
+        <div id="deletePreview" class="delete-preview"></div>
+        <div class="modal-actions">
+          <button id="cancelDelete" class="btn outline">Batal</button>
+          <button id="confirmDelete" class="btn danger">Hapus Produk</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
