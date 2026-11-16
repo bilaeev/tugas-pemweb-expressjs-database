@@ -1,19 +1,27 @@
 ﻿const express = require("express");
+const path = require("path");
 const productRoutes = require("./routes/product.routes");
 
 const app = express();
+
 app.use(express.json());
 
+// REST API produk
+app.use("/products", productRoutes);
+
+// Frontend pink pastel
+app.use(express.static(path.join(__dirname, "../public")));
+
+// Halaman utama
 app.get("/", (req, res) => {
-  res.json({ message: "API Produk ExpressJS", status: "OK" });
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
-app.use("/products", productRoutes);
-app.use(express.static("public"));
-
+// Penanganan endpoint tidak ditemukan
 app.use((req, res) => {
-  res.status(404).json({ message: "Endpoint tidak ditemukan" });
+  res.status(404).json({
+    message: "Endpoint tidak ditemukan"
+  });
 });
 
 module.exports = app;
-
